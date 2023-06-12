@@ -1,5 +1,6 @@
 <!-- plugin_path -->
-<script type="text/javascript">var plugin_path = '{{ asset("assets/js") }}/';</script>
+<script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
+
 
 <!-- jquery -->
 <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Sections\SectionController ;
+use App\Http\Controllers\levels\LevelController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,9 @@ Route::get('/dashboard', function () {
 
 Route::resource('sections' , SectionController::class) ;
 
+Route::resource('levels' , LevelController::class) ;
+Route::post('levelsDestroyAll' , [LevelController::class, 'destroyAll']) ;
+Route::post('Filter_Classes', [LevelController::class, 'levelsFilter'])->name('Filter_Classes');
 
 
 

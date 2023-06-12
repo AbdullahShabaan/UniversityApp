@@ -38,6 +38,11 @@ class SectionController extends Controller
   public function store(Request $request)
   {
 
+    if (Section::where('name->ar' , $request->ArabicName)->orWhere('name->en' , $request->EnglishName)->exists()) {
+      toastr()->error(trans('validation.unique_trans'));
+      return redirect()->back() ;
+    }
+
     try {
 
     $request->validate([
@@ -48,6 +53,7 @@ class SectionController extends Controller
 
       'ArabicName.required' => trans('validation.required arabic') ,
       'EnglishName.required' => trans('validation.required english') ,
+
       'notes.max' => "notes must be less than 200char",
     ]);
     
@@ -108,7 +114,13 @@ class SectionController extends Controller
 
     try {
     $request->validate([
-      'notes' => 'max:200' ,  
+      'ArabicName'  => 'unique:sections,name->ar,'.$id ,  
+      'EnglishName' => 'unique:sections,name->en,'.$id ,  
+      'notes'       => 'max:200'
+    ],[
+
+      'ArabicName.unique'  => trans('validation.unique_trans') ,
+      'EnglishName.unique'  => trans('validation.unique_trans') ,
     ]);
 
     $sections = Section::where('id' , $id)->update([
@@ -151,7 +163,7 @@ class SectionController extends Controller
 
      catch (\Exception $e) {
       
-        toastr()->error($e->getMessage());
+        toastr()->warning(trans('showLevel.destnict'));
 
         return back();
 
