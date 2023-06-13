@@ -6,6 +6,9 @@ return  [
  'Departments' => 'Departments List' ,
   'levels' => 'Levels' ,
  'levels list' => 'levels list' ,
+ 'groups' => 'Groups',
+ 'groups list'  => 'groups list' ,
+ 
 
 
 ];

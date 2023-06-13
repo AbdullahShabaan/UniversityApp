@@ -18,4 +18,9 @@ class Section extends Model
 
     
     public $translatable = ['name'];
+
+
+    public function groups () {
+        return $this->hasMany(Group::class , 'sectionID') ;
+    }
 }

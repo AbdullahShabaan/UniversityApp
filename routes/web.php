@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Sections\SectionController ;
 use App\Http\Controllers\levels\LevelController ;
+use App\Http\Controllers\GroupController ;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +56,10 @@ Route::post('levelsDestroyAll' , [LevelController::class, 'destroyAll']) ;
 Route::post('Filter_Classes', [LevelController::class, 'levelsFilter'])->name('Filter_Classes');
 
 
+Route::resource('groups' , GroupController::class);
+
+// ajax route
+Route::get('/getLevel/{id}' ,[ GroupController::class , 'getLevel']) ;
 
 
 });
