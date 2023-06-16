@@ -61,8 +61,14 @@ Route::resource('groups' , GroupController::class);
 // ajax route
 Route::get('/getLevel/{id}' ,[ GroupController::class , 'getLevel']) ;
 
+// livewire Route
+Route::get('showParent' , function () {
+    return view('livewire.showParent');
+});
+
 
 });
+
 
 
 require __DIR__.'/auth.php';
